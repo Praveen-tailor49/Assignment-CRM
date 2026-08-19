@@ -5,7 +5,10 @@ export const login = createAsyncThunk('auth/login', async (credentials, { reject
   try {
     const response = await api.post('/auth/login', credentials);
     localStorage.setItem('token', response.data.token);
-    return response.data.user;
+    
+    // Fetch fully populated user object (with roles and permissions) right after login
+    const meResponse = await api.get('/auth/me');
+    return meResponse.data.data;
   } catch (error) {
     return rejectWithValue(error.response?.data?.message || 'Login failed');
   }
