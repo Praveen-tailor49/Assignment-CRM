@@ -91,7 +91,7 @@ const Profile = () => {
             <div className="mb-8 flex items-center space-x-6">
               <div className="relative group">
                 {user?.profile_picture ? (
-                  <img src={`http://localhost:5000${user.profile_picture}`} alt="Profile" className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md" />
+                  <img src={`https://crm.pathshalalog.com${user.profile_picture}`} alt="Profile" className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md" />
                 ) : (
                   <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-indigo-100 to-purple-100 flex items-center justify-center text-indigo-600 font-bold text-3xl shadow-md border-4 border-white">
                     {user?.name?.charAt(0).toUpperCase()}

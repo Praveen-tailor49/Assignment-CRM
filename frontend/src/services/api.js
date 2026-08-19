@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api', // Adjust in production
+  baseURL: 'https://crm.pathshalalog.com/api', // Adjust in production
   headers: {
     'Content-Type': 'application/json'
   }
