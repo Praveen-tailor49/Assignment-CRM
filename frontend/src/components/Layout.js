@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/slices/authSlice';
-import { LayoutDashboard, Users, UserCog, Briefcase, User, LogOut, Menu, X, ChevronDown, Bell } from 'lucide-react';
+import { LayoutDashboard, Users, UserCog, Briefcase, User, LogOut, Menu, ChevronDown, Bell } from 'lucide-react';
 import { Toaster } from 'react-hot-toast';
 import Avatar from './ui/Avatar';
 
