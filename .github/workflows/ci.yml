@@ -1,0 +1,46 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    # Backend Setup
+    - name: Install Backend Dependencies
+      working-directory: ./backend
+      run: npm ci || npm install
+
+    # Frontend Setup
+    - name: Install Frontend Dependencies
+      working-directory: ./frontend
+      run: npm ci || npm install
+
+    # We could add tests here if configured:
+    # - name: Run Backend Tests
+    #   working-directory: ./backend
+    #   run: npm test
+    #
+    # - name: Run Frontend Tests
+    #   working-directory: ./frontend
+    #   run: npm test
+
+    - name: Build Frontend
+      working-directory: ./frontend
+      run: npm run build
